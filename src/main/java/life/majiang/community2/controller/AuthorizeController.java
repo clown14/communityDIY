@@ -41,7 +41,7 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
-                           HttpServletRequest request,
+                           //HttpServletRequest request,
                            HttpServletResponse response) {    //在request中拿到session，spring自动加载
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();   //ctrl+alt+v 快速实例化
@@ -67,8 +67,8 @@ public class AuthorizeController {
             userMapper.insert(user);
 
 //          登陆成功，写cookie和session
-            response.addCookie(new Cookie("token", token));
 //          request.getSession().setAttribute("user", githubUser);
+            response.addCookie(new Cookie("token", token));
             return "redirect:/";    //跳转，重定向，地址改变
         } else {
             //登陆失败，重新登陆
