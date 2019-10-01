@@ -39,8 +39,8 @@ public class AuthorizeController {
     private String redirectUri;
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name = "code") String code,
-                           @RequestParam(name = "state") String state,
+    public String callback(@RequestParam(value = "code") String code,
+                           @RequestParam(value = "state") String state,
                            //HttpServletRequest request,
                            HttpServletResponse response) {    //在request中拿到session，spring自动加载
 
