@@ -23,6 +23,7 @@ public class PaginationDTO {
     private Integer totalPage;
 
     public void setPagination(Integer totalCount, Integer page, Integer size) {
+        this.page = page;
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
         } else {
@@ -37,14 +38,15 @@ public class PaginationDTO {
             page = totalPage;
         }
 
-        this.page = page;
 
         pages.add(page);
         for (int i = 1; i <= 3; i++) {
+            //page左边，头插
             if (page - i > 0) {
                 pages.add(0, page - i);
             }
 
+            //page右边，尾插
             if (page + i <= totalPage) {
                 pages.add(page + i);
             }
