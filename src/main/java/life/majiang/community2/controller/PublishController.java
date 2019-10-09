@@ -37,9 +37,9 @@ public class PublishController {
     }
 
     @PostMapping("/publish")
-    public String doPublic(@RequestParam(value = "title") String title,
-                           @RequestParam(value = "description") String description,
-                           @RequestParam(value = "tag") String tag,
+    public String doPublic(@RequestParam(value = "title",required = false) String title,
+                           @RequestParam(value = "description",required = false) String description,
+                           @RequestParam(value = "tag",required = false) String tag,
                            HttpServletRequest request,
                            Model model) {
         model.addAttribute("title", title);
