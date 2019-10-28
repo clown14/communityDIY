@@ -75,6 +75,7 @@ public class QuestionService {
         //size*(page-1)
         Integer offset = size * (page - 1);
 //        List<Question> questions = questionMapper.list(offset, size);
+        //Rowbounds 分页标识
         List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
 
         List<QuestionDTO> questionDTOList = new ArrayList<>();
