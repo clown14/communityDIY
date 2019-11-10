@@ -8,6 +8,7 @@ import life.majiang.community2.model.Question; /**
 
 public interface QuestionExtMapper {
     void incView(Question question);
+    void incCommentCount(Question question);
 }
 
     
