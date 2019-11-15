@@ -1,9 +1,8 @@
 package life.majiang.community2.controller;
 
-import life.majiang.community2.dto.CommentDTO;
+import life.majiang.community2.dto.CommentCreateDTO;
 import life.majiang.community2.dto.ResultDTO;
 import life.majiang.community2.exception.CustomizeErrorCode;
-import life.majiang.community2.mapper.CommentMapper;
 import life.majiang.community2.model.Comment;
 import life.majiang.community2.model.User;
 import life.majiang.community2.service.CommentService;
@@ -30,7 +29,7 @@ public class CommentController {
 
     @ResponseBody
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
-    public Object post(@RequestBody CommentDTO commentDTO,
+    public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
                         HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
@@ -38,9 +37,9 @@ public class CommentController {
         }
 
         Comment comment = new Comment();
-        comment.setParentId(commentDTO.getParentId());
-        comment.setContent(commentDTO.getContent());
-        comment.setType(commentDTO.getType());
+        comment.setParentId(commentCreateDTO.getParentId());
+        comment.setContent(commentCreateDTO.getContent());
+        comment.setType(commentCreateDTO.getType());
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModified(System.currentTimeMillis());
         comment.setCommentator(user.getId());
